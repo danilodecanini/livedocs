@@ -1,0 +1,63 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": false,
+		"indentStyle": "space",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 80,
+		"attributePosition": "auto"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		},
+		"ignore": [
+			"**/node_module",
+			"**/build",
+			"**/*.mjml",
+			"**/*.png",
+			"**/*.html",
+			"**/node_modules",
+			"**/*.d.ts"
+		]
+	},
+	"javascript": {
+		"formatter": {
+			"jsxQuoteStyle": "single",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "none",
+			"semicolons": "asNeeded",
+			"arrowParentheses": "always",
+			"bracketSpacing": true,
+			"bracketSameLine": false,
+			"quoteStyle": "single",
+			"attributePosition": "auto"
+		},
+		"globals": [
+			"describe",
+			"it",
+			"before",
+			"after",
+			"beforeEach",
+			"afterEach",
+			"expect",
+			"sinon",
+			"container",
+			"Mocha",
+			"Express",
+			"vi",
+			"React",
+			"test",
+			"jest",
+			"beforeAll",
+			"afterAll",
+			"JSX"
+		]
+	}
+}
