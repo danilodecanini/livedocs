@@ -14,10 +14,10 @@ import { useEffect, useRef, useState } from 'react'
 
 const CollaborativeRoom = ({
   roomId,
-  roomMetadata
+  roomMetadata,
+  users,
+  currentUserType
 }: CollaborativeRoomProps) => {
-  const currentUserType = 'editor'
-
   const [documentTitle, setDocumentTitle] = useState(roomMetadata.title)
   const [editing, setEditing] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -101,7 +101,7 @@ const CollaborativeRoom = ({
               {currentUserType === 'editor' && !editing && (
                 <Image
                   src='/assets/icons/edit.svg'
-                  alt='Edit'
+                  alt='edit'
                   width={24}
                   height={24}
                   onClick={() => setEditing(true)}
@@ -110,13 +110,21 @@ const CollaborativeRoom = ({
               )}
 
               {currentUserType !== 'editor' && !editing && (
-                <p className='view-only-tag'>View Only</p>
+                <p className='view-only-tag'>View only</p>
               )}
 
               {loading && <p className='text-sm text-gray-400'>saving...</p>}
             </div>
             <div className='flex w-full flex-1 justify-end gap-2 sm:gap-3'>
               <ActiveCollaborators />
+
+              {/* <ShareModal
+                roomId={roomId}
+                collaborators={users}
+                creatorId={roomMetadata.creatorId}
+                currentUserType={currentUserType}
+              /> */}
+
               <SignedOut>
                 <SignInButton />
               </SignedOut>
@@ -125,7 +133,7 @@ const CollaborativeRoom = ({
               </SignedIn>
             </div>
           </Header>
-          <Editor />
+          <Editor roomId={roomId} currentUserType={currentUserType} />
         </div>
       </ClientSideSuspense>
     </RoomProvider>
