@@ -3,9 +3,9 @@ import React from 'react'
 
 const Document = () => {
   return (
-    <div>
+    <main className='flex w-full flex-col items-center'>
       <CollaborativeRoom />
-    </div>
+    </main>
   )
 }
 
