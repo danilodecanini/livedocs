@@ -5,8 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value))
+export const parseStringify = (value: unknown) =>
+  JSON.parse(JSON.stringify(value))
 
 export const getAccessType = (userType: UserType) => {
   switch (userType) {
