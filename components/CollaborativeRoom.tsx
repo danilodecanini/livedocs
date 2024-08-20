@@ -3,6 +3,7 @@
 import ActiveCollaborators from '@/components/ActiveCollaborators'
 import Header from '@/components/Header'
 import Loader from '@/components/Loader'
+import ShareModal from '@/components/ShareModal'
 import { Editor } from '@/components/editor/Editor'
 import { Input } from '@/components/ui/input'
 import { updateDocument } from '@/lib/actions/room.actions'
@@ -118,12 +119,12 @@ const CollaborativeRoom = ({
             <div className='flex w-full flex-1 justify-end gap-2 sm:gap-3'>
               <ActiveCollaborators />
 
-              {/* <ShareModal
+              <ShareModal
                 roomId={roomId}
                 collaborators={users}
                 creatorId={roomMetadata.creatorId}
                 currentUserType={currentUserType}
-              /> */}
+              />
 
               <SignedOut>
                 <SignInButton />
