@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { updateDocumentAccess } from '@/lib/actions/room.actions'
 import { useSelf } from '@liveblocks/react/suspense'
 import Image from 'next/image'
 import React from 'react'
@@ -31,7 +32,18 @@ const ShareModal = ({
   const [email, setEmail] = React.useState('')
   const [userType, setUserType] = React.useState<UserType>('viewer')
 
-  const shareDocumentHandler = async () => {}
+  const shareDocumentHandler = async () => {
+    setLoading(true)
+
+    await updateDocumentAccess({
+      roomId,
+      email,
+      userType: userType as UserType,
+      updatedBy: user.info
+    })
+
+    setLoading(false)
+  }
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
