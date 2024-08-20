@@ -109,7 +109,6 @@ function Toolbar({
       }}
     >
       <div className='floating-toolbar'>
-        {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
         <button
           onClick={() => {
             const isOpen = editor.dispatchCommand(

@@ -34,7 +34,7 @@ function Placeholder() {
 export function Editor({
   roomId,
   currentUserType
-}: { roomId: string; currentUserType: string }) {
+}: { roomId: string; currentUserType: UserType }) {
   const status = useEditorStatus()
   const { threads } = useThreads()
 

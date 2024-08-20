@@ -1,23 +1,21 @@
-import UserTypeSelector from '@/components/ui/UserTypeSelector'
-import { Button } from '@/components/ui/button'
+import UserTypeSelector from '@/components/UserTypeSelector'
 import {
   removeCollaborator,
   updateDocumentAccess
 } from '@/lib/actions/room.actions'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
+import { Button } from './ui/button'
 
-const Collaborators = ({
+const Collaborator = ({
   roomId,
   creatorId,
-  email,
   collaborator,
+  email,
   user
 }: CollaboratorProps) => {
-  const [userType, setUserType] = React.useState(
-    collaborator.userType || 'viewer'
-  )
-  const [loading, setLoading] = React.useState(false)
+  const [userType, setUserType] = useState(collaborator.userType || 'viewer')
+  const [loading, setLoading] = useState(false)
 
   const shareDocumentHandler = async (type: string) => {
     setLoading(true)
@@ -41,7 +39,7 @@ const Collaborators = ({
   }
 
   return (
-    <li className='`flex items-center justify-between gap-2 py-3'>
+    <li className='flex items-center justify-between gap-2 py-3'>
       <div className='flex gap-2'>
         <Image
           src={collaborator.avatar}
@@ -68,7 +66,7 @@ const Collaborators = ({
       ) : (
         <div className='flex items-center'>
           <UserTypeSelector
-            userType={userType}
+            userType={userType as UserType}
             setUserType={setUserType || 'viewer'}
             onClickHandler={shareDocumentHandler}
           />
@@ -84,4 +82,4 @@ const Collaborators = ({
   )
 }
 
-export default Collaborators
+export default Collaborator
