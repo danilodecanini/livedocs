@@ -1,6 +1,7 @@
 'use client'
 
 import Comments from '@/components/Comments'
+import { DeleteModal } from '@/components/DeleteModal'
 import Loader from '@/components/Loader'
 import FloatingToolbarPlugin from '@/components/editor/plugins/FloatingToolbarPlugin'
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin'
@@ -35,7 +36,6 @@ export function Editor({
   currentUserType
 }: { roomId: string; currentUserType: string }) {
   const status = useEditorStatus()
-  console.log({ status })
   const { threads } = useThreads()
 
   const initialConfig = liveblocksConfig({
@@ -54,7 +54,7 @@ export function Editor({
       <div className='editor-container size-full'>
         <div className='toolbar-wrapper flex min-w-full justify-between'>
           <ToolbarPlugin />
-          {/* {currentUserType === 'editor' && <DeleteModal roomId={roomId} />} */}
+          {currentUserType === 'editor' && <DeleteModal roomId={roomId} />}
         </div>
 
         <div className='editor-wrapper flex flex-col items-center justify-start'>
